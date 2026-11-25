@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  :root {
+    --bg-canvas: #edf3f1;
+    --bg-surface-1: #ffffff;
+    --bg-surface-2: #f2f7f5;
+    --bg-surface-3: #e3ede9;
+    --border-subtle: #d8e5e0;
+    --border-strong: #bed2ca;
+    --ink-primary: #101b18;
+    --ink-secondary: #41544e;
+    --ink-muted: #5d726b;
+    --accent-50: #ecfdf5;
+    --accent-100: #d1fae5;
+    --accent-400: #12b886;
+    --accent-500: #10b981;
+    --accent-600: #059669;
+    --accent-700: #055a52;
+  }
+
+  .dark {
+    --bg-canvas: #050a09;
+    --bg-surface-1: #0e1815;
+    --bg-surface-2: #15231f;
+    --bg-surface-3: #1d2f2a;
+    --border-subtle: rgba(255, 255, 255, 0.09);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --ink-primary: #f1f7f5;
+    --ink-secondary: #a1b8b0;
+    --ink-muted: #758e86;
+    --accent-50: rgba(16, 185, 129, 0.16);
+    --accent-100: rgba(16, 185, 129, 0.26);
+    --accent-400: #34d399;
+    --accent-500: #12b886;
+    --accent-600: #059669;
+    --accent-700: #047857;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--ink-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :where(a, button, summary):focus-visible {
+    outline: 2px solid var(--accent-600);
+    outline-offset: 2px;
+  }
+}

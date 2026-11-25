@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12B886" />
+      <stop offset="55%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#055A52" />
+    </linearGradient>
+
+    <radialGradient id="ambient-glow" cx="15%" cy="15%" r="85%">
+      <stop offset="0%" stop-color="#6EE7B7" stop-opacity="0.34" />
+      <stop offset="60%" stop-color="#12B886" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#055A52" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="pocket-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#ECFDF5" stop-opacity="0.78" />
+    </linearGradient>
+
+    <filter id="pocket-shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#033B36" flood-opacity="0.28" />
+    </filter>
+
+    <clipPath id="iconClip">
+      <rect width="1024" height="1024" rx="230" />
+    </clipPath>
+    <clipPath id="pocketClip">
+      <rect x="176" y="398" width="672" height="442" rx="59" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#iconClip)">
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#bg-grad)" />
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#ambient-glow)" />
+
+    <!-- Back fanned frosted card (-7.5 deg) -->
+    <g transform="translate(497, 399) rotate(-7.5) translate(-497, -399)">
+      <rect
+        x="241"
+        y="220"
+        width="512"
+        height="358"
+        rx="39"
+        fill="#FFFFFF"
+        fill-opacity="0.24"
+        stroke="#FFFFFF"
+        stroke-opacity="0.55"
+        stroke-width="8"
+      />
+    </g>
+
+    <!-- Front peeking budget card (-2.5 deg) with allocation progress pill -->
+    <g transform="translate(527, 445) rotate(-2.5) translate(-527, -445)">
+      <rect
+        x="271"
+        y="266"
+        width="512"
+        height="358"
+        rx="39"
+        fill="#FFFFFF"
+        fill-opacity="0.52"
+        stroke="#FFFFFF"
+        stroke-opacity="0.82"
+        stroke-width="9"
+      />
+      <circle cx="344" cy="328" r="18" fill="#059669" />
+      <rect x="386" y="315" width="286" height="26" rx="13" fill="#059669" fill-opacity="0.22" />
+      <rect x="386" y="315" width="194" height="26" rx="13" fill="#059669" />
+    </g>
+
+    <!-- Front frosted-glass envelope pocket with V-fold bevel -->
+    <g filter="url(#pocket-shadow)">
+      <rect
+        x="176"
+        y="398"
+        width="672"
+        height="442"
+        rx="59"
+        fill="url(#pocket-fill)"
+      />
+      <g clip-path="url(#pocketClip)">
+        <path
+          d="M176 398 L512 630 L848 398 Z"
+          fill="#059669"
+          fill-opacity="0.08"
+        />
+        <path
+          d="M188 412 L512 632 L836 412"
+          fill="none"
+          stroke="#FFFFFF"
+          stroke-opacity="0.72"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <rect
+        x="181"
+        y="403"
+        width="662"
+        height="432"
+        rx="55"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-opacity="0.9"
+        stroke-width="10"
+      />
+    </g>
+
+    <rect
+      x="5"
+      y="5"
+      width="1014"
+      height="1014"
+      rx="226"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-opacity="0.28"
+      stroke-width="10"
+    />
+  </g>
+</svg>

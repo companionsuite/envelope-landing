@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Envelope Companion — Native iOS Client for Actual Budget</title>
+    <meta
+      name="description"
+      content="Zero-based envelope budgeting, always offline. A fast, native iPhone &amp; iPad companion for your self-hosted Actual Budget server with receipt OCR and CRDT sync."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#059669" />
+    <link rel="canonical" href="https://envelope.milliways.si/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Envelope Companion" />
+    <meta property="og:url" content="https://envelope.milliways.si/" />
+    <meta property="og:title" content="Envelope Companion — Native iOS Client for Actual Budget" />
+    <meta
+      property="og:description"
+      content="Zero-based envelope budgeting, always offline. A fast, native iPhone &amp; iPad companion for your self-hosted Actual Budget server with receipt OCR and CRDT sync."
+    />
+    <meta property="og:image" content="https://envelope.milliways.si/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Envelope Companion — Native iOS Client for Actual Budget"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Envelope Companion — Native iOS Client for Actual Budget" />
+    <meta
+      name="twitter:description"
+      content="Zero-based envelope budgeting, always offline. A fast, native iPhone &amp; iPad companion for your self-hosted Actual Budget server with receipt OCR and CRDT sync."
+    />
+    <meta name="twitter:image" content="https://envelope.milliways.si/og.png" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Envelope Companion",
+        "operatingSystem": "iOS 17+",
+        "applicationCategory": "FinanceApplication",
+        "description": "Zero-based envelope budgeting, always offline. Native iPhone and iPad companion for self-hosted Actual Budget servers with sub-2-second quick entry, on-device Vision receipt OCR, CRDT offline sync, E2EE support, and free Demo Mode.",
+        "url": "https://envelope.milliways.si/",
+        "downloadUrl": "https://apps.apple.com/app/id6837667371",
+        "image": "https://envelope.milliways.si/og.png",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free Demo Mode",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Envelope Companion Pro (Monthly)",
+            "price": "2.99",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Envelope Companion Pro (Yearly with 7-day free trial)",
+            "price": "19.99",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Envelope Companion Pro (Lifetime with Family Sharing)",
+            "price": "49.99",
+            "priceCurrency": "USD"
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does Envelope Companion connect to my Actual Budget server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It connects directly from your iPhone or iPad to your self-hosted Actual Budget server over HTTPS (including PikaPods), Tailscale, or your Home Wi-Fi LAN (port 5006)—with zero middleman servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does Envelope Companion cost, and can I try it without a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can explore the built-in Demo Mode (Standard and 100-item Large presets) for free with no server required. Envelope Companion Pro is $2.99/month, $19.99/year (with a 7-day free trial), or $49.99 Lifetime with Family Sharing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Envelope Companion support end-to-end encrypted (E2EE) Actual budgets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can unlock E2EE budgets directly on your device; your encryption key and server credentials are stored securely in the iOS Keychain."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does receipt scanning and optional BYOK AI work privately?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Receipt OCR runs 100% on-device using Apple Vision. Optional Bring-Your-Own-Key (BYOK) AI categorization is disabled by default; when you explicitly trigger it, only extracted OCR text and active category names are sent directly from your device to your chosen provider (OpenAI, Anthropic, Gemini, or self-hosted Ollama)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which devices and iOS versions are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Envelope Companion is a universal native app for iPhone and iPad supporting iOS 17+ and iOS 26 Liquid Glass, including Home Screen and Lock Screen Widgets, Control Center actions, Siri Shortcuts, and Share Sheet receipt import."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script>
+      (function () {
+        var stored = localStorage.getItem('ec_landing_theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -34,7 +34,6 @@ interface IPhoneFrameProps extends PhoneShot {
 }
 
 const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
-  expectedFile,
   screenTitle,
   screenSubtitle,
   previewRows,
@@ -48,15 +47,15 @@ const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
       aria-label={alt}
       className="w-full rounded-[2.25rem] bg-[#161a24] p-2 shadow-xl ring-1 ring-black/15 dark:bg-[#080d0b] dark:ring-white/15 sm:rounded-[2.5rem] sm:p-2.5"
     >
-      <div className="relative flex aspect-[9/19.5] flex-col justify-between overflow-hidden rounded-[1.8rem] bg-gradient-to-b from-[var(--bg-surface-2)] to-[var(--bg-surface-1)] p-4 text-left sm:rounded-[2rem] sm:p-5">
+      <div className="relative flex aspect-[9/19.5] flex-col justify-between overflow-hidden rounded-[1.8rem] bg-gradient-to-b from-[var(--bg-surface-2)] to-[var(--bg-surface-1)] p-3.5 text-left sm:rounded-[2rem] sm:p-5">
         <div
           aria-hidden="true"
           className="pointer-events-none mx-auto mb-2 h-3.5 w-16 rounded-full bg-black/90 ring-1 ring-white/10 sm:h-4 sm:w-20"
         />
 
-        <div className="space-y-3">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[var(--accent-500)]/50 bg-[var(--accent-50)] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-[var(--accent-700)] uppercase dark:text-[var(--accent-400)]">
-            <span>Placeholder &middot; Goldie Pending</span>
+        <div className="space-y-2.5 sm:space-y-3">
+          <div className="inline-flex items-center rounded-full bg-[var(--accent-50)] px-2.5 py-0.5 text-[10px] font-semibold tracking-wide whitespace-nowrap text-[var(--accent-700)] uppercase dark:text-[var(--accent-400)]">
+            <span>App Preview</span>
           </div>
 
           <div>
@@ -72,18 +71,16 @@ const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
             {previewRows.map((row) => (
               <div
                 key={row}
-                className="flex items-center justify-between rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] px-3 py-2 text-[11px] font-medium text-[var(--ink-secondary)] shadow-2xs"
+                className="flex items-center justify-between rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] px-2.5 py-2 text-[11px] font-medium text-[var(--ink-secondary)] shadow-2xs sm:px-3"
               >
                 <span className="truncate">{row}</span>
-                <span className="ml-2 h-2 w-8 shrink-0 rounded-full bg-[var(--accent-400)]/40" />
+                <span className="ml-2 h-2 w-7 shrink-0 rounded-full bg-[var(--accent-500)]/45 sm:w-8" />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-3 rounded-xl border border-dashed border-[var(--border-strong)] bg-[var(--bg-surface-2)]/80 px-2.5 py-2 text-center font-mono text-[10px] text-[var(--ink-muted)]">
-          public/screenshots/{expectedFile}
-        </div>
+        <div aria-hidden="true" className="h-2" />
       </div>
     </div>
     {label && (
@@ -672,13 +669,24 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               <span>Read Connection Guide</span>
               <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
             </a>
-            <a
-              href={`mailto:${SITE_CONFIG.supportEmail}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] bg-[var(--bg-surface-2)] px-5 py-3.5 text-sm font-semibold text-[var(--ink-primary)] transition hover:bg-[var(--bg-surface-3)]"
-            >
-              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>App Store Coming Soon &middot; Contact Us</span>
-            </a>
+            {SITE_CONFIG.appStoreLive ? (
+              <a
+                href={SITE_CONFIG.appStoreUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] bg-[var(--bg-surface-2)] px-5 py-3.5 text-sm font-semibold text-[var(--ink-primary)] transition hover:bg-[var(--bg-surface-3)]"
+              >
+                <span>Download on App Store</span>
+              </a>
+            ) : (
+              <a
+                href={`mailto:${SITE_CONFIG.supportEmail}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] bg-[var(--bg-surface-2)] px-5 py-3.5 text-sm font-semibold text-[var(--ink-primary)] transition hover:bg-[var(--bg-surface-3)]"
+              >
+                <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>App Store Coming Soon &middot; Contact Us</span>
+              </a>
+            )}
           </div>
         </div>
       </section>

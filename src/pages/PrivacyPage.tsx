@@ -21,7 +21,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-8">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent-50)] px-3 py-1 text-xs font-medium text-[var(--accent-700)] dark:text-[var(--accent-400)]">
-          <ShieldCheck className="h-3.5 w-3.5" />
+          <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
           Privacy Policy
         </span>
         <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-[var(--ink-primary)] sm:text-4xl">
@@ -35,7 +35,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
       <div className="space-y-6 text-[15px] leading-relaxed text-[var(--ink-secondary)]">
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <Lock className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <Lock className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             1. Zero Developer Collection &amp; No Analytics
           </h2>
           <p className="mt-3">
@@ -43,7 +43,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             developer backend that collects, stores, or inspects your financial data, credentials,
             or usage activity. The app contains{' '}
             <strong>
-              no third-party analytics, no advertising SDKs, and no crash-tracking trackers
+              no third-party analytics, no advertising SDKs, and no crash trackers
             </strong>
             .
           </p>
@@ -51,19 +51,21 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <Server className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <Server className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             2. Direct Connection to Your Self-Hosted Actual Server
           </h2>
           <p className="mt-3">
-            Network requests go <strong>only</strong> to the <code className="font-mono">actual-server</code>{' '}
-            URL you explicitly configure. Your server URL, authentication tokens, and End-to-End
-            Encryption (E2EE) keys are stored securely in the iOS Keychain on your device.
+            Budget sync requests go <strong>only</strong> to the <code className="font-mono">actual-server</code>{' '}
+            URL you explicitly configure (aside from Apple StoreKit purchases and optional,
+            user-triggered BYOK AI requests described below). Your server URL, authentication tokens,
+            and End-to-End Encryption (E2EE) keys are stored securely in the iOS Keychain on your
+            device.
           </p>
         </section>
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <HardDrive className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <HardDrive className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             3. On-Device Storage &amp; App Group
           </h2>
           <p className="mt-3">
@@ -76,7 +78,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <Camera className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <Camera className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             4. Camera, Photo Library &amp; On-Device Vision OCR
           </h2>
           <p className="mt-3">
@@ -88,7 +90,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <MapPin className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <MapPin className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             5. Opt-In Location for Nearby Payees
           </h2>
           <p className="mt-3">
@@ -101,7 +103,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <Fingerprint className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <Fingerprint className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             6. Biometric Lock
           </h2>
           <p className="mt-3">
@@ -113,7 +115,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <Sparkles className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <Sparkles className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             7. Optional BYOK Receipt AI
           </h2>
           <p className="mt-3">
@@ -127,7 +129,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-            <CreditCard className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+            <CreditCard className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" aria-hidden="true" />
             8. In-App Purchases
           </h2>
           <p className="mt-3">
@@ -158,13 +160,16 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               GitHub
             </a>
             . You can also return to the{' '}
-            <button
-              type="button"
-              onClick={() => onNavigate('/#support')}
+            <a
+              href="/#support"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/#support');
+              }}
               className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
             >
               Support section
-            </button>
+            </a>
             .
           </p>
         </section>

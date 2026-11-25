@@ -11,7 +11,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-8">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent-50)] px-3 py-1 text-xs font-medium text-[var(--accent-700)] dark:text-[var(--accent-400)]">
-          <FileText className="h-3.5 w-3.5" />
+          <FileText className="h-3.5 w-3.5" aria-hidden="true" />
           Terms of Use
         </span>
         <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-[var(--ink-primary)] sm:text-4xl">
@@ -89,13 +89,16 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
           </h2>
           <p className="mt-2">
             Your use of the app is also governed by our{' '}
-            <button
-              type="button"
-              onClick={() => onNavigate('/privacy')}
+            <a
+              href="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/privacy');
+              }}
               className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
             >
               Privacy Policy
-            </button>
+            </a>
             . Questions may be directed to{' '}
             <a
               href={`mailto:${SITE_CONFIG.supportEmail}`}

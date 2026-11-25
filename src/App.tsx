@@ -40,7 +40,7 @@ export const App: React.FC = () => {
     if (path === '/support') {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          document.getElementById('support')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('support')?.scrollIntoView({ behavior: 'instant', block: 'start' });
         });
       });
     }
@@ -103,14 +103,25 @@ export const App: React.FC = () => {
       setActiveHash(nextHash);
     }
 
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const scrollBehavior: ScrollBehavior = prefersReducedMotion ? 'instant' : 'smooth';
+
     if (hashPart) {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          document.getElementById(hashPart)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document
+            .getElementById(hashPart)
+            ?.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
         });
       });
-    } else if (nextPath !== '/support') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (nextPath === '/support') {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById('support')?.scrollIntoView({ behavior: 'instant', block: 'start' });
+        });
+      });
+    } else {
+      window.scrollTo({ top: 0, behavior: scrollBehavior });
     }
   }, []);
 

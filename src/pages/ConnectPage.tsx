@@ -220,17 +220,22 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-10">
-        <button
-          type="button"
-          onClick={() => onNavigate('/')}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--ink-secondary)] transition hover:text-[var(--ink-primary)]"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Home
-        </button>
+        <div>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/');
+            }}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--ink-secondary)] transition hover:text-[var(--ink-primary)]"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            Back to Home
+          </a>
+        </div>
 
         <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--accent-50)] px-3.5 py-1 text-xs font-medium text-[var(--accent-700)] dark:text-[var(--accent-400)]">
-          <Server className="h-3.5 w-3.5" />
+          <Server className="h-3.5 w-3.5" aria-hidden="true" />
           Connection Guide
         </div>
 
@@ -253,7 +258,10 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
                 href={`#${method.id}`}
                 className="inline-flex items-center gap-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] px-3.5 py-2 text-sm font-medium text-[var(--ink-primary)] transition hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-2)]"
               >
-                <Icon className="h-4 w-4 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+                <Icon
+                  className="h-4 w-4 text-[var(--accent-600)] dark:text-[var(--accent-400)]"
+                  aria-hidden="true"
+                />
                 {method.title.split(' (')[0]}
               </a>
             );
@@ -265,7 +273,7 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
       <section className="mb-10 rounded-2xl border border-[var(--border-subtle)] bg-[var(--accent-50)] p-5 sm:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
           <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--bg-surface-1)] text-[var(--accent-600)] shadow-xs dark:text-[var(--accent-400)]">
-            <Sparkles className="h-5 w-5" />
+            <Sparkles className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
             <h2 className="font-display text-base font-semibold text-[var(--ink-primary)]">
@@ -294,7 +302,7 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent-50)] px-3 py-1 text-xs font-medium text-[var(--accent-700)] dark:text-[var(--accent-400)]">
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                     {method.badge}
                   </span>
                   <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-[var(--ink-primary)]">
@@ -338,7 +346,10 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
                 <ul className="mt-2.5 space-y-2 text-sm text-[var(--ink-secondary)]">
                   {method.prerequisites.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+                      <CheckCircle2
+                        className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent-600)] dark:text-[var(--accent-400)]"
+                        aria-hidden="true"
+                      />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -369,7 +380,10 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
 
               <div className="mt-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-2)] p-4">
                 <h3 className="flex items-center gap-2 text-sm font-semibold text-[var(--ink-primary)]">
-                  <Shield className="h-4 w-4 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+                  <Shield
+                    className="h-4 w-4 text-[var(--accent-600)] dark:text-[var(--accent-400)]"
+                    aria-hidden="true"
+                  />
                   Troubleshooting
                 </h3>
                 <ul className="mt-2.5 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-[var(--ink-secondary)]">
@@ -386,7 +400,10 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
       {/* E2EE Note */}
       <section className="mt-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
         <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[var(--ink-primary)]">
-          <Lock className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+          <Lock
+            className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]"
+            aria-hidden="true"
+          />
           End-to-End Encrypted (E2EE) Budgets
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-[var(--ink-secondary)]">
@@ -402,7 +419,10 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
         className="mt-8 rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6 sm:p-8"
       >
         <div className="flex items-center gap-2.5">
-          <AlertTriangle className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+          <AlertTriangle
+            className="h-5 w-5 text-[var(--accent-600)] dark:text-[var(--accent-400)]"
+            aria-hidden="true"
+          />
           <h2 className="font-display text-2xl font-bold tracking-tight text-[var(--ink-primary)]">
             Common Connection Errors
           </h2>
@@ -418,7 +438,10 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
               className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-canvas)] p-4"
             >
               <h3 className="flex items-center gap-2 text-sm font-semibold text-[var(--ink-primary)]">
-                <KeyRound className="h-4 w-4 shrink-0 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
+                <KeyRound
+                  className="h-4 w-4 shrink-0 text-[var(--accent-600)] dark:text-[var(--accent-400)]"
+                  aria-hidden="true"
+                />
                 {err.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[var(--ink-secondary)]">
@@ -448,13 +471,16 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
             </a>
             .
           </p>
-          <button
-            type="button"
-            onClick={() => onNavigate('/')}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/');
+            }}
             className="font-medium text-[var(--accent-600)] hover:underline dark:text-[var(--accent-400)]"
           >
             Return to Home &rarr;
-          </button>
+          </a>
         </div>
       </section>
     </div>

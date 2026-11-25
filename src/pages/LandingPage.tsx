@@ -28,6 +28,7 @@ interface PhoneShot {
 
 interface IPhoneFrameProps extends PhoneShot {
   className?: string;
+  eager?: boolean;
 }
 
 const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
@@ -35,6 +36,7 @@ const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
   alt,
   label,
   className = '',
+  eager = false,
 }) => (
   <figure className={`flex flex-col items-center ${className}`}>
     <div className="w-full overflow-hidden rounded-[2.25rem] bg-[#161a24] p-2 shadow-xl ring-1 ring-black/15 dark:bg-[#080d0b] dark:ring-white/15 sm:rounded-[2.5rem] sm:p-2.5">
@@ -44,7 +46,8 @@ const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
           alt={alt}
           width={1320}
           height={2868}
-          loading="lazy"
+          loading={eager ? 'eager' : 'lazy'}
+          fetchPriority={eager ? 'high' : undefined}
           decoding="async"
           className="block h-full w-full object-cover"
         />
@@ -142,7 +145,7 @@ const CHAPTERS = [
       {
         expectedFile: '03-receipt-ocr.webp',
         alt: 'Envelope Companion All Accounts ledger showing split transaction, #tax-deductible tag, and searchable transaction filters',
-        label: 'Receipt OCR',
+        label: 'Split Transactions & Tags',
       },
       {
         expectedFile: '04-accounts.webp',
@@ -335,8 +338,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
           <div className="lg:col-span-6">
             <div className="mx-auto grid max-w-md grid-cols-2 items-start gap-4 sm:max-w-lg sm:gap-6">
-              <IPhoneFrame {...HERO_SHOTS[0]} />
-              <IPhoneFrame {...HERO_SHOTS[1]} className="mt-6 sm:mt-8" />
+              <IPhoneFrame {...HERO_SHOTS[0]} eager />
+              <IPhoneFrame {...HERO_SHOTS[1]} eager className="mt-6 sm:mt-8" />
             </div>
           </div>
         </div>

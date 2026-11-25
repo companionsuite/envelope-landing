@@ -1,6 +1,6 @@
 node_modules
 dist
-out
-.cloudflare
+out/
+.cloudflare/
 .DS_Store
 *.local

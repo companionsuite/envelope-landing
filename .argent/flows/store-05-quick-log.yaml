@@ -1,0 +1,15 @@
+steps:
+  - launch: com.actualcompanion.app
+  - await:
+      visible:
+        text: Reports
+  - tap:
+      text: Reports
+  - await:
+      visible:
+        text: Log Expense
+  - tap:
+      text: Log Expense
+  - wait: 800
+  - await:
+      idle: true

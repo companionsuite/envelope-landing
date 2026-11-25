@@ -1,0 +1,10 @@
+steps:
+  - launch: com.actualcompanion.app
+  - await:
+      visible:
+        text: Reports
+  - tap:
+      text: Reports
+  - wait: 1000
+  - await:
+      idle: true

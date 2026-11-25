@@ -1,0 +1,13 @@
+steps:
+  - launch: com.actualcompanion.app
+  - await:
+      visible:
+        text: Settings
+  - tap:
+      text: Settings
+  - await:
+      visible:
+        text: Envelope Companion Pro
+  - wait: 600
+  - await:
+      idle: true

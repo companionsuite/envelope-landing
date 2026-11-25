@@ -1,0 +1,13 @@
+steps:
+  - launch: com.actualcompanion.app
+  - await:
+      visible:
+        text: Accounts
+  - tap:
+      text: Accounts
+  - await:
+      visible:
+        text: On-Budget
+  - wait: 600
+  - await:
+      idle: true

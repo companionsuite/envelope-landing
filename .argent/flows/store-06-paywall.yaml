@@ -1,0 +1,15 @@
+steps:
+  - launch: com.actualcompanion.app
+  - await:
+      visible:
+        text: Settings
+  - tap:
+      text: Settings
+  - await:
+      visible:
+        text: Upgrade to Pro
+  - tap:
+      text: Upgrade to Pro
+  - wait: 1500
+  - await:
+      idle: true

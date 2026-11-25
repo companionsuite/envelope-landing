@@ -1,0 +1,26 @@
+steps:
+  - launch: com.actualcompanion.app
+  - await:
+      visible:
+        text: Try Demo
+  - tap:
+      text: Try Demo
+  - await:
+      visible:
+        text: Settings
+  - tap:
+      text: Settings
+  - await:
+      visible:
+        text: Scale (100)
+  - tap:
+      text: Scale (100)
+  - wait: 1000
+  - tap:
+      text: Budget
+  - await:
+      visible:
+        text: To Budget
+  - wait: 800
+  - await:
+      idle: true

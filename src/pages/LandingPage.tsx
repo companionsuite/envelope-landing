@@ -22,65 +22,35 @@ interface LandingPageProps {
 
 interface PhoneShot {
   expectedFile: string;
-  screenTitle: string;
-  screenSubtitle: string;
-  previewRows: readonly string[];
   alt: string;
   label?: string;
 }
 
 interface IPhoneFrameProps extends PhoneShot {
   className?: string;
+  eager?: boolean;
 }
 
 const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
-  screenTitle,
-  screenSubtitle,
-  previewRows,
+  expectedFile,
   alt,
   label,
   className = '',
+  eager = false,
 }) => (
   <figure className={`flex flex-col items-center ${className}`}>
-    <div
-      role="img"
-      aria-label={alt}
-      className="w-full rounded-[2.25rem] bg-[#161a24] p-2 shadow-xl ring-1 ring-black/15 dark:bg-[#080d0b] dark:ring-white/15 sm:rounded-[2.5rem] sm:p-2.5"
-    >
-      <div className="relative flex aspect-[9/19.5] flex-col justify-between overflow-hidden rounded-[1.8rem] bg-gradient-to-b from-[var(--bg-surface-2)] to-[var(--bg-surface-1)] p-3.5 text-left sm:rounded-[2rem] sm:p-5">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none mx-auto mb-2 h-3.5 w-16 rounded-full bg-black/90 ring-1 ring-white/10 sm:h-4 sm:w-20"
+    <div className="w-full overflow-hidden rounded-[2.25rem] bg-[#161a24] p-2 shadow-xl ring-1 ring-black/15 dark:bg-[#080d0b] dark:ring-white/15 sm:rounded-[2.5rem] sm:p-2.5">
+      <div className="relative aspect-[1320/2868] w-full overflow-hidden rounded-[1.8rem] bg-[var(--bg-surface-2)] sm:rounded-[2rem]">
+        <img
+          src={`/screenshots/${expectedFile}`}
+          alt={alt}
+          width={1320}
+          height={2868}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchPriority={eager ? 'high' : undefined}
+          decoding="async"
+          className="block h-full w-full object-cover"
         />
-
-        <div className="space-y-2.5 sm:space-y-3">
-          <div className="inline-flex items-center rounded-full bg-[var(--accent-50)] px-2.5 py-0.5 text-[10px] font-semibold tracking-wide whitespace-nowrap text-[var(--accent-700)] uppercase dark:text-[var(--accent-400)]">
-            <span>App Preview</span>
-          </div>
-
-          <div>
-            <p className="font-display text-sm font-bold text-[var(--ink-primary)] sm:text-base">
-              {screenTitle}
-            </p>
-            <p className="mt-0.5 text-[11px] leading-snug text-[var(--ink-secondary)]">
-              {screenSubtitle}
-            </p>
-          </div>
-
-          <div className="space-y-2 pt-1">
-            {previewRows.map((row) => (
-              <div
-                key={row}
-                className="flex items-center justify-between rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] px-2.5 py-2 text-[11px] font-medium text-[var(--ink-secondary)] shadow-2xs sm:px-3"
-              >
-                <span className="truncate">{row}</span>
-                <span className="ml-2 h-2 w-7 shrink-0 rounded-full bg-[var(--accent-500)]/45 sm:w-8" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div aria-hidden="true" className="h-2" />
       </div>
     </div>
     {label && (
@@ -94,17 +64,11 @@ const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
 const HERO_SHOTS: readonly PhoneShot[] = [
   {
     expectedFile: '01-budget.webp',
-    screenTitle: 'Envelope Budget',
-    screenSubtitle: 'To Budget, category groups, and rollover balances.',
-    previewRows: ['To Budget · $420.00', 'Groceries · $315 / $500', 'Rent & Utilities · Funded'],
-    alt: 'Placeholder frame for Envelope Companion Budget tab showing To-Budget balance and category envelopes',
+    alt: 'Envelope Companion Budget screen showing To Budget $23,124.00, Held $500.00, upcoming bills, and category group envelopes',
   },
   {
     expectedFile: '02-quick-entry.webp',
-    screenTitle: 'Quick Entry',
-    screenSubtitle: 'Sub-2-second haptic cents keypad with smart chips.',
-    previewRows: ['-$42.50 · Trader Joe’s', 'Envelope · Groceries', 'Account · Checking'],
-    alt: 'Placeholder frame for Envelope Companion Quick Entry sheet with haptic cents keypad and smart payee chips',
+    alt: 'Envelope Companion Log Expense screen with haptic cents keypad, smart payee suggestions, and category chips',
   },
 ];
 
@@ -127,18 +91,12 @@ const CHAPTERS = [
     shots: [
       {
         expectedFile: '01-budget.webp',
-        screenTitle: 'Monthly Envelopes',
-        screenSubtitle: 'Rollover balances & upcoming scheduled bills.',
-        previewRows: ['To Budget · $420.00', 'Hold for Next Month', 'Hide Inactive Envelopes'],
-        alt: 'Placeholder frame for Envelope Companion monthly budget overview',
+        alt: 'Envelope Companion monthly budget overview showing To Budget, Held for Next Month, upcoming bills, and category envelopes',
         label: 'Monthly Budget',
       },
       {
         expectedFile: '06-search.webp',
-        screenTitle: 'Global Search',
-        screenSubtitle: 'Instant search across payees, #tags, and amounts.',
-        previewRows: ['Query · #grocery', 'Whole Foods · -$64.20', 'Trader Joe’s · -$42.50'],
-        alt: 'Placeholder frame for Envelope Companion global search (Cmd+K)',
+        alt: 'Envelope Companion All Accounts ledger with search bar, account, category, and #tag filter chips',
         label: 'Global Search',
       },
     ],
@@ -162,10 +120,7 @@ const CHAPTERS = [
     shots: [
       {
         expectedFile: '02-quick-entry.webp',
-        screenTitle: '2-Second Entry',
-        screenSubtitle: 'Haptic cents keypad + nearby payee chips.',
-        previewRows: ['Amount · $42.50', 'Payee · Smart Suggestions', 'Split · 2 Envelopes'],
-        alt: 'Placeholder frame for Envelope Companion Quick Entry haptic keypad',
+        alt: 'Envelope Companion Quick Entry sheet with haptic cents keypad, smart payee chips, and category balances',
         label: 'Quick Entry Keypad',
       },
     ],
@@ -189,26 +144,17 @@ const CHAPTERS = [
     shots: [
       {
         expectedFile: '03-receipt-ocr.webp',
-        screenTitle: 'Receipt OCR Split',
-        screenSubtitle: 'Apple Vision item extraction & proportional tax.',
-        previewRows: ['Produce · $28.40', 'Household · $14.10', 'Tax Split · Proportional'],
-        alt: 'Placeholder frame for Envelope Companion Receipt OCR split review',
-        label: 'Receipt OCR',
+        alt: 'Envelope Companion All Accounts ledger showing split transaction, #tax-deductible tag, and searchable transaction filters',
+        label: 'Split Transactions & Tags',
       },
       {
         expectedFile: '04-accounts.webp',
-        screenTitle: 'Accounts & Ledger',
-        screenSubtitle: 'On-budget and off-budget account reconciliation.',
-        previewRows: ['Checking · $3,480.00', 'Savings · $12,100.00', 'Reconciled · Today'],
-        alt: 'Placeholder frame for Envelope Companion Accounts list and reconciliation',
+        alt: 'Envelope Companion Accounts screen showing Net Worth $166,270.72 across On-Budget and Off-Budget accounts',
         label: 'Accounts',
       },
       {
         expectedFile: '05-reports.webp',
-        screenTitle: 'Live Reports',
-        screenSubtitle: 'Net Worth, Cash Flow, and Spending Pace charts.',
-        previewRows: ['Net Worth · +4.2%', 'Cash Flow · +$680', 'CSV Export Ready'],
-        alt: 'Placeholder frame for Envelope Companion Reports and Spending Pace charts',
+        alt: 'Envelope Companion Reports screen showing Spending by Category donut chart ($27.45K) and Monthly Spending Pace',
         label: 'Reports & Pace',
       },
     ],
@@ -232,18 +178,12 @@ const CHAPTERS = [
     shots: [
       {
         expectedFile: '04-accounts.webp',
-        screenTitle: 'Account Ledger',
-        screenSubtitle: 'Reconcile balances and edit offline anytime.',
-        previewRows: ['On-Budget Accounts', 'Off-Budget Tracking', 'Cleared & Reconciled'],
-        alt: 'Placeholder frame for Envelope Companion account reconciliation',
+        alt: 'Envelope Companion Accounts list showing On-Budget and Off-Budget balances and reconciliation status',
         label: 'Ledger & Reconcile',
       },
       {
         expectedFile: '05-reports.webp',
-        screenTitle: 'Spending Charts',
-        screenSubtitle: 'Native iOS charts with CSV export.',
-        previewRows: ['Net Worth Trend', 'Monthly Cash Flow', 'Category Spending Pace'],
-        alt: 'Placeholder frame for Envelope Companion native spending reports',
+        alt: 'Envelope Companion Reports screen with Spending by Category donut chart and Monthly Spending Pace',
         label: 'Spending Insights',
       },
     ],
@@ -267,10 +207,7 @@ const CHAPTERS = [
     shots: [
       {
         expectedFile: '07-settings.webp',
-        screenTitle: 'Privacy & Sync',
-        screenSubtitle: 'CRDT sync, E2EE unlock, Face ID, and Demo Mode.',
-        previewRows: ['Sync · CRDT Direct', 'E2EE · Unlocked', 'Demo · Standard & Large'],
-        alt: 'Placeholder frame for Envelope Companion Settings showing CRDT sync, E2EE, and Face ID lock',
+        alt: 'Envelope Companion Settings screen showing Scale Household Budget (100) active, demo presets, and Pro section',
         label: 'Settings & E2EE (Light & Dark)',
       },
     ],
@@ -401,8 +338,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
           <div className="lg:col-span-6">
             <div className="mx-auto grid max-w-md grid-cols-2 items-start gap-4 sm:max-w-lg sm:gap-6">
-              <IPhoneFrame {...HERO_SHOTS[0]} />
-              <IPhoneFrame {...HERO_SHOTS[1]} className="mt-6 sm:mt-8" />
+              <IPhoneFrame {...HERO_SHOTS[0]} eager />
+              <IPhoneFrame {...HERO_SHOTS[1]} eager className="mt-6 sm:mt-8" />
             </div>
           </div>
         </div>

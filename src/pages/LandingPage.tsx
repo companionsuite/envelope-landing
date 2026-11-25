@@ -288,16 +288,8 @@ const PRICING_TIERS = [
     highlighted: false,
   },
   {
-    name: 'Monthly',
-    price: '$2.99',
-    cadence: 'per month',
-    description: 'Flexible monthly access to Envelope Companion Pro.',
-    features: ['Unlimited self-hosted sync', 'On-device Vision receipt OCR', 'Widgets, Shortcuts & E2EE'],
-    highlighted: false,
-  },
-  {
     name: 'Yearly',
-    price: '$19.99',
+    price: '$9.99',
     cadence: 'per year · 7-day free trial',
     description: 'Best ongoing value with a 7-day free trial for eligible users.',
     features: ['7-day free trial included', 'All Pro features unlocked', 'Cancel anytime in Apple ID'],
@@ -305,7 +297,7 @@ const PRICING_TIERS = [
   },
   {
     name: 'Lifetime',
-    price: '$49.99',
+    price: '$19.99',
     cadence: 'one-time · Family Sharing',
     description: 'Pay once and share Envelope Companion Pro with your Apple Family.',
     features: ['One-time non-consumable purchase', 'Apple Family Sharing enabled', 'All future Pro updates'],
@@ -323,7 +315,7 @@ const FAQ_ITEMS = [
   {
     question: 'How much does it cost, and can I try it without a server?',
     answer:
-      'Yes! Built-in Demo Mode (Standard and 100-item Large presets) is free with no server required. Envelope Companion Pro is $2.99/month, $19.99/year (with a 7-day free trial), or $49.99 Lifetime with Family Sharing.',
+      'Yes! Built-in Demo Mode (Standard and 100-item Large presets) is free with no server required. Envelope Companion Pro is $9.99/year (with a 7-day free trial) or $19.99 Lifetime with Family Sharing.',
   },
   {
     question: 'Does Envelope Companion support end-to-end encrypted (E2EE) budgets?',
@@ -536,12 +528,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           </h2>
           <p className="mt-3 text-base leading-relaxed text-[var(--ink-secondary)]">
             Explore the full app locally with built-in Demo Mode (no server required), or unlock{' '}
-            <strong>Envelope Companion Pro</strong> with monthly, yearly (7-day free trial), or
+            <strong>Envelope Companion Pro</strong> with an annual plan (7-day free trial) or
             Lifetime Family Sharing.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {PRICING_TIERS.map((tier) => (
             <div
               key={tier.name}
